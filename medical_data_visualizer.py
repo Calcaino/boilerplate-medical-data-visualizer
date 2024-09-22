@@ -4,10 +4,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # 1
-df = None
+df=pd.read_csv('medical_examination.csv')
 
 # 2
-df['overweight'] = None
+df['IMC']= df['weight']/((df['height']/100)**2)
+df['overweight']=df['IMC'].apply(lambda x:1 if x>25 else 0)
+df.drop(columns = ['IMC'],inplace=True)
+
 
 # 3
 
